@@ -1,27 +1,167 @@
 {
+  "geral": {
+    "fillAlFields": "Por favor, preencha todos os campos",
+    "validAmount": "Por favor, introduza um valor válido",
+    "validDate": "Por favor, introduza uma data válida",
+    "viewAll": "Ver tudo",
+    "email": "Email",
+    "download": "Descarregar"
+  },
+  "emojiPicker": {
+    "pick": "Escolher ícone",
+    "change": "Alterar ícone"
+  },
   "signup": {
-    "title": "Criar conta",
-    "subtitle": "Começa a controlar as tuas finanças com o Money Manager",
-    "fullName": "Nome Completo*",
-    "fullNamePlaceholder": "Insere o teu nome",
-    "email": "Endereço de Email*",
-    "emailPlaceholder": "exemplo@dominio.com",
+    "title": "Criar uma conta",
+    "subtitle": "Comece a controlar as suas finanças com o Money Manager",
+    "fullName": "Nome completo*",
+    "fullNamePlaceholder": "Introduza o seu nome",
+    "email": "Endereço de email*",
+    "emailPlaceholder": "email@exemplo.com",
     "password": "Palavra-passe*",
-    "passwordPlaceholder": "*********",
-    "signUp": "REGISTRAR",
+    "signUp": "REGISTAR",
     "signingUp": "A registar...",
-    "alreadyHaveAccount": "Já tens uma conta? ",
+    "alreadyHaveAccount": "Já tem uma conta? ",
     "login": "Iniciar sessão"
   },
   "login": {
     "title": "Bem-vindo de volta",
-    "subtitle": "Por favor, introduz os teus dados para iniciar sessão",
+    "subtitle": "Por favor, introduza os seus dados para iniciar sessão",
     "email": "Endereço de email*",
     "emailPlaceholder": "email@exemplo.com",
     "password": "Palavra-passe*",
     "loginText": "INICIAR SESSÃO",
     "logging": "A iniciar sessão...",
-    "dontHaveAccount": "Ainda não tens conta? ",
-    "signup": "Criar conta"
+    "dontHaveAccount": "Ainda não tem uma conta? ",
+    "signup": "Criar uma conta"
+  },
+  "home": {
+    "errorData": "Erro ao obter dados do painel",
+    "totalBalance": "Saldo total",
+    "totalIncome": "Receita total",
+    "totalExpense": "Despesa total",
+    "recentTransactions": "Transações recentes",
+    "recentExpenses": "Despesas recentes",
+    "recentIncomes": "Receitas recentes",
+    "financeOverview": {
+      "title": "Visão geral das finanças",
+      "totalBalance": "Saldo total"
+    }
+  },
+  "category": {
+    "page": {
+      "title": "Todas as categorias",
+      "addCategory": "Adicionar categoria",
+      "errorData": "Erro ao obter dados das categorias",
+      "successAdding": "Categoria adicionada com sucesso",
+      "errorAdding": "Erro ao adicionar categoria",
+      "successUpdating": "Categoria atualizada com sucesso",
+      "errorUpdating": "Erro ao atualizar categoria",
+      "edit": "Editar categoria"
+    },
+    "list": {
+      "title": "Fontes de categoria",
+      "noCategories": "Nenhuma categoria encontrada"
+    },
+    "form": {
+      "categoryName": "Nome da categoria*",
+      "placeholder": "ex.: Alimentação, Transporte, Salário, etc.",
+      "categoryType": "Tipo de categoria*",
+      "updating": "A atualizar...",
+      "adding": "A adicionar...",
+      "update": "Atualizar categoria",
+      "add": "Adicionar categoria",
+      "income": "Receita",
+      "expense": "Despesa"
+    }
+  },
+  "income": {
+    "page": {
+      "addIncome": "Adicionar receita",
+      "deleteIncome": "Eliminar receita",
+      "deleteIncomeConfirmation": "Tem a certeza de que pretende eliminar esta receita?",
+      "addIncomeSuccess": "Receita adicionada com sucesso",
+      "errorAdding": "Erro ao adicionar receita",
+      "deleteIncomeSuccess": "Receita eliminada com sucesso",
+      "errorDeleting": "Erro ao eliminar receita",
+      "errorData": "Erro ao obter dados de receitas",
+      "errorCategories": "Erro ao obter categorias de receitas"
+    },
+    "form": {
+      "name": "Fonte de receita*",
+      "placeholder": "ex.: Salário, Bónus, etc.",
+      "amount": "Montante*",
+      "placeholderAmount": "ex.: 10000, 20000, etc.",
+      "date": "Data*",
+      "category": "Categoria*",
+      "add": "Adicionar receita",
+      "adding": "A adicionar..."
+    },
+    "list": {
+      "title": "Todas as receitas"
+    },
+    "overview": {
+      "title": "Visão geral de receitas",
+      "desc": "Acompanhe as suas receitas",
+      "totalIncome": "Receita total",
+      "add": "Adicionar receita"
+    }
+  },
+  "expense": {
+    "page": {
+      "addExpense": "Adicionar despesa",
+      "deleteExpense": "Eliminar despesa",
+      "deleteExpenseConfirmation": "Tem a certeza de que pretende eliminar esta despesa?",
+      "addExpenseSuccess": "Despesa adicionada com sucesso",
+      "errorAdding": "Erro ao adicionar despesa",
+      "deleteExpenseSuccess": "Despesa eliminada com sucesso",
+      "errorDeleting": "Erro ao eliminar despesa",
+      "errorData": "Erro ao obter dados de despesas",
+      "errorCategories": "Erro ao obter categorias de despesas"
+    },
+    "form": {
+      "name": "Fonte de despesa*",
+      "placeholder": "ex.: Supermercado, Restaurante, etc.",
+      "amount": "Montante*",
+      "placeholderAmount": "ex.: 10000, 20000, etc.",
+      "date": "Data*",
+      "category": "Categoria*",
+      "add": "Adicionar despesa",
+      "adding": "A adicionar..."
+    },
+    "list": {
+      "title": "Todas as despesas"
+    },
+    "overview": {
+      "title": "Visão geral de despesas",
+      "desc": "Acompanhe as suas despesas",
+      "totalIncome": "Despesa total",
+      "add": "Adicionar despesa"
+    }
+  },
+  "deleteAlert": {
+    "deleting": "A eliminar...",
+    "delete": "Eliminar"
+  },
+  "filter": {
+    "title": "Filtrar transações",
+    "desc": "Selecione os filtros",
+    "type": "Tipo",
+    "income": "Receita",
+    "expense": "Despesa",
+    "startDate": "Data de início",
+    "endDate": "Data de fim",
+    "date": "Data",
+    "sortField": "Ordenar por",
+    "amount": "Montante",
+    "category": "Categoria",
+    "sortOrder": "Ordem",
+    "ascending": "Ascendente",
+    "descending": "Descendente",
+    "search": "Pesquisar",
+    "placeholderSearch": "Pesquisar...",
+    "transactions": "Transações",
+    "transDesc": "Selecione os filtros e clique em aplicar para filtrar as transações",
+    "loadTransactions": "A carregar transações..."
   }
 }

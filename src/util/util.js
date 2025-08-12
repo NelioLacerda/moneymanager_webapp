@@ -1,27 +1,21 @@
-export const addThousandsSeparator = (number) => {
-    if (number === null || isNaN(number)) return "";
+export const addThousandsSeparator = (value) => {
+    if (value === null || value === undefined || value === "" || isNaN(value)) return "";
 
-    const numberString = number.toString();
-    const parts = numberString.split(".");
+    const num = Number(value);
 
-    let integerPart = parts[0];
-    let decimalPart = parts[1];
+    const absStr = Math.abs(num).toString();
+    const [intPartRaw, decPart] = absStr.split(".");
 
-    const lastThree = integerPart.substring(integerPart.length - 3);
-    const otherNumbers = integerPart.substring(0, integerPart.length - 3);
+    const intPart = intPartRaw.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-    if (otherNumbers !== "") {
-        const formattedOtherNumbers = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
-        integerPart = formattedOtherNumbers + ',' + lastThree;
-    } else {
-        integerPart = lastThree;
-    }
+    return decPart !== undefined && decPart.length > 0
+        ? `${intPart},${decPart}`
+        : intPart;
+};
 
-    return decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
-}
 
 export function prepareLineChartData(transactions = [], options = {}) {
-    const { interval = 'monthly', includeExpenses = false, currency = 'INR', valueBy = 'income' } = options;
+    const { interval = 'monthly', includeExpenses = false, currency = 'EUR', valueBy = 'income' } = options;
 
     const parseDate = (d) => {
         if (d instanceof Date && !isNaN(d)) return d;
