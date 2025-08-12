@@ -1,118 +1,98 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
+    ResponsiveContainer,
     PieChart,
     Pie,
     Cell,
     Tooltip,
-    Legend,
-    ResponsiveContainer,
-    LabelList,
 } from "recharts";
 
-/**
- * CustomPieChart
- * - data: [{ name: string, amount: number }]
- * - colors: string[] (hex ou css colors)
- * - label: string (título do centro)
- * - totalAmount: string | number (valor central formatado)
- * - showTextAnchor: boolean (se true, mostra rótulos ancorados nos segmentos)
- * - height: number (altura do gráfico em px)
- * - innerRadius / outerRadius: números para controle do donut
- * - valueFormatter: (value, name) => string (formatação do tooltip)
- */
 const CustomPieChart = ({
                             data = [],
-                            colors = [],
                             label = "",
                             totalAmount = "",
+                            colors = ["#8884d8", "#82ca9d", "#ffc658"],
                             showTextAnchor = false,
-                            height = 260,
-                            innerRadius = 70,
-                            outerRadius = 100,
-                            valueFormatter,
                         }) => {
-    const defaultPalette = ["#4c1d95", "#dc2626", "#16a34a", "#0ea5e9", "#f59e0b", "#9333ea"];
-    const palette = colors.length ? colors : defaultPalette;
-
-    const chartData = Array.isArray(data)
-        ? data.map((d) => ({ name: d?.name ?? "", amount: Number(d?.amount) || 0 }))
-        : [];
-
-    const total = chartData.reduce((sum, d) => sum + (d.amount || 0), 0);
-    const isEmpty = total <= 0;
-
-    const fmtNumber = (v) =>
-        typeof v === "number" ? v.toLocaleString(undefined, { maximumFractionDigits: 2 }) : String(v);
-
-    const tooltipFormatter = (value, name) => {
-        if (typeof valueFormatter === "function") return [valueFormatter(value, name), name];
-        return [fmtNumber(value), name];
+    const formattedNumber = (value) => {
+        if (value == null || Number.isNaN(Number(value))) return "-";
+        return new Intl.NumberFormat().format(value);
     };
 
-    const percentOf = (value) => (total > 0 ? (value / total) * 100 : 0);
+    const total = data.reduce((sum, d) => sum + (Number(d.amount) || 0), 0);
 
     return (
-        <div style={{ width: "100%", height }}>
-            <div className="relative w-full h-full">
-                <ResponsiveContainer width="100%" height="100%">
+        <div className="w-full card">
+            <div className="w-full h-64 relative flex flex-col items-center">
+                <ResponsiveContainer width="100%" height={220}>
                     <PieChart>
                         <Pie
-                            data={isEmpty ? [{ name: "Sem dados", amount: 1 }] : chartData}
+                            data={data}
                             dataKey="amount"
                             nameKey="name"
-                            innerRadius={innerRadius}
-                            outerRadius={outerRadius}
-                            paddingAngle={2}
-                            cornerRadius={3}
-                            isAnimationActive
-                            stroke="#ffffff"
-                            strokeWidth={1}
-                            labelLine={showTextAnchor && !isEmpty}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={70}
+                            outerRadius={100}
+                            paddingAngle={4}
+                            startAngle={90}
+                            endAngle={-270}
                         >
-                            {(isEmpty ? [{ name: "Sem dados", amount: 1 }] : chartData).map((entry, idx) => (
+                            {data.map((entry, index) => (
                                 <Cell
-                                    key={`cell-${idx}`}
-                                    fill={isEmpty ? "#E5E7EB" : palette[idx % palette.length]}
+                                    key={`slice-${index}`}
+                                    fill={colors[index % colors.length]}
                                 />
                             ))}
-
-                            {showTextAnchor && !isEmpty && (
-                                <LabelList
-                                    dataKey="amount"
-                                    position="outside"
-                                    formatter={(value, entry) => {
-                                        const pct = percentOf(value);
-                                        // Mostra rótulo somente para fatias com pelo menos 3% para evitar poluição visual
-                                        return pct >= 3 ? `${entry.name} (${pct.toFixed(0)}%)` : "";
-                                    }}
-                                />
-                            )}
                         </Pie>
 
-                        {!isEmpty && (
-                            <Tooltip
-                                formatter={tooltipFormatter}
-                                wrapperStyle={{ outline: "none" }}
-                            />
-                        )}
-                        {!isEmpty && (
-                            <Legend
-                                verticalAlign="bottom"
-                                align="center"
-                                iconType="circle"
-                                iconSize={8}
-                            />
-                        )}
+                        <Tooltip
+                            formatter={(value) => formattedNumber(value)}
+                            cursor={false}
+                        />
                     </PieChart>
                 </ResponsiveContainer>
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
-                    {label ? <span className="text-xs text-gray-500">{label}</span> : null}
-                    <span className="text-lg font-semibold">{String(totalAmount ?? "")}</span>
+                {/* center label */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+          <span
+              className={`text-sm text-gray-500 ${showTextAnchor ? "" : ""}`}
+              aria-hidden={!showTextAnchor}
+          >
+            {label}
+          </span>
+                    <span className="text-2xl font-semibold mt-1">{totalAmount}</span>
+                </div>
+
+                {/* legend / small summary under chart */}
+                <div className="mt-4 w-full flex justify-center gap-6 px-4">
+                    {data.map((d, i) => (
+                        <div key={d.name} className="flex items-center gap-2">
+              <span
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: colors[i % colors.length] }}
+              />
+                            <div className="text-left">
+                                <div className="text-xs text-gray-500">{d.name}</div>
+                                <div className="text-sm font-medium">{formattedNumber(d.amount)}</div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
     );
+};
+
+CustomPieChart.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({ name: PropTypes.string, amount: PropTypes.number })
+    ),
+    label: PropTypes.string,
+    totalAmount: PropTypes.string,
+    colors: PropTypes.arrayOf(PropTypes.string),
+    showTextAnchor: PropTypes.bool,
 };
 
 export default CustomPieChart;

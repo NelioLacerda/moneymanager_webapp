@@ -1,6 +1,11 @@
 {
   "geral": {
-    "fillAlFields": "Please fill all the fields"
+    "fillAlFields": "Please fill all the fields",
+    "validAmount": "Please enter a valid amount",
+    "validDate": "Please enter a valid date",
+    "viewAll": "View All",
+    "email": "Email",
+    "download": "Download"
   },
   "emojiPicker": {
     "pick": "Pick icon",
@@ -30,6 +35,19 @@
     "dontHaveAccount": "Don't have an account? ",
     "signup": "Create an account"
   },
+  "home": {
+    "errorData": "Error fetching dashboard data",
+    "totalBalance": "Total Balance",
+    "totalIncome": "Total Income",
+    "totalExpense": "Total Expense",
+    "recentTransactions": "Recent Transactions",
+    "recentExpenses": "Recent Expenses",
+    "recentIncomes": "Recent Incomes",
+    "financeOverview": {
+      "title": "Finance Overview",
+      "totalBalance": "Total Balance"
+    }
+  },
   "category": {
     "page": {
       "title": "All Categories",
@@ -56,5 +74,94 @@
       "income": "Income",
       "expense": "Expense"
     }
+  },
+  "income": {
+    "page": {
+      "addIncome": "Add Income",
+      "deleteIncome": "Delete Income",
+      "deleteIncomeConfirmation": "Are you sure you want to delete this income?",
+      "addIncomeSuccess": "Income added successfully",
+      "errorAdding": "Error adding income",
+      "deleteIncomeSuccess": "Income deleted successfully",
+      "errorDeleting": "Error deleting income",
+      "errorData": "Error fetching income data",
+      "errorCategories": "Error fetching income categories"
+    },
+    "form": {
+      "name": "Income Source*",
+      "placeholder": "e.g. Salary, Bonus, etc.",
+      "amount": "Amount*",
+      "placeholderAmount": "e.g. 10000, 20000, etc.",
+      "date": "Date*",
+      "category": "Category*",
+      "add": "Add Income",
+      "adding": "Updating..."
+    },
+    "list": {
+      "title": "All Incomes"
+    },
+    "overview": {
+      "title": "Income Overview",
+      "desc": "Track your incomes",
+      "totalIncome": "Total Income",
+      "add": "Add Income"
+    }
+  },
+  "expense": {
+    "page": {
+      "addExpense": "Add Expense",
+      "deleteExpense": "Delete Expense",
+      "deleteExpenseConfirmation": "Are you sure you want to delete this expense?",
+      "addExpenseSuccess": "Expense added successfully",
+      "errorAdding": "Error adding expense",
+      "deleteExpenseSuccess": "Expense deleted successfully",
+      "errorDeleting": "Error deleting expense",
+      "errorData": "Error fetching expense data",
+      "errorCategories": "Error fetching expense categories"
+    },
+    "form": {
+      "name": "Expense Source*",
+      "placeholder": "e.g. Groceries, Restaurant, etc.",
+      "amount": "Amount*",
+      "placeholderAmount": "e.g. 10000, 20000, etc.",
+      "date": "Date*",
+      "category": "Category*",
+      "add": "Add Expense",
+      "adding": "Adding..."
+    },
+    "list": {
+      "title": "All Expenses"
+    },
+    "overview": {
+      "title": "Expense Overview",
+      "desc": "Track your expenses",
+      "totalIncome": "Total Expense",
+      "add": "Add Expense"
+    }
+  },
+  "deleteAlert": {
+    "deleting": "Deleting...",
+    "delete": "Delete"
+  },
+  "filter": {
+    "title": "Filter Transactions",
+    "desc": "Select the filters",
+    "type": "Type",
+    "income": "Income",
+    "expense": "Expense",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "date": "Date",
+    "sortField": "Sort Field",
+    "amount": "Amount",
+    "category": "Category",
+    "sortOrder": "Sort Order",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "search": "Search",
+    "placeholderSearch": "Search...",
+    "transactions": "Transactions",
+    "transDesc": "Select the filters and click apply to filter the transactions",
+    "loadTransactions": "Loading transactions..."
   }
 }

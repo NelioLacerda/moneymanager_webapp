@@ -1,14 +1,17 @@
 import {ArrowRight} from "lucide-react";
 import TransactionInfoCard from "./TransactionInfoCard.jsx";
 import moment from "moment";
+import {useTranslation} from "react-i18next";
 
 const RecentTransactions = ({transactions, onMore}) => {
+    const { t } = useTranslation();
+
     return(
         <div className="card">
             <div className="flex justify-between items-center">
-                <h4 className="text-lg">Recent Transactions</h4>
-                <button className="card-btn" onClick={onMore}>
-                    View All <ArrowRight className="text-base" size={15}/>
+                <h4 className="text-lg">{t("home.recentTransactions")}</h4>
+                <button className="hover:cursor-pointer group inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 active:bg-purple-800 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 transition-colors" onClick={onMore}>
+                    {t("geral.viewAll")} <ArrowRight className="text-base" size={15}/>
                 </button>
             </div>
 

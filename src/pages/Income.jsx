@@ -5,14 +5,16 @@ import {API_ENDPOINTS} from "../util/apiEndpoints.js";
 import toast from "react-hot-toast";
 import IncomeList from "../components/IncomeList.jsx";
 import Modal from "../components/Modal.jsx";
-import {Plus} from "lucide-react";
 import AddIncomeFrom from "../components/AddIncomeFrom.jsx";
 import DeleteAlert from "../components/DeleteAlert.jsx";
 import IncomeOverview from "../components/IncomeOverview.jsx";
 import {UserHook} from "../hooks/UserHook.jsx";
+import {useTranslation} from "react-i18next";
 
 const Income = () => {
     UserHook();
+
+    const { t } = useTranslation();
 
     const [incomeData, setIncomeData] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -34,7 +36,7 @@ const Income = () => {
             }
         } catch (error) {
             console.error("Error fetching income data:", error);
-            toast.error("Error fetching income data");
+            toast.error(t("income.page.errorData"));
         } finally {
             setLoading(false);
         }
@@ -48,7 +50,7 @@ const Income = () => {
             }
         } catch (error) {
             console.error("Error fetching income categories:", error);
-            toast.error("Error fetching income categories");
+            toast.error(t("income.page.errorCategories"));
         }
     }
 
@@ -56,18 +58,18 @@ const Income = () => {
         const {name, amount, categoryId, icon, date} = income;
 
         if (!name.trim() || !amount.trim() || !categoryId.trim()) {
-            toast.error("Please fill in all fields");
+            toast.error(t("geral.fillAlFields"));
             return;
         }
 
         if (Number(amount) <= 0 || isNaN(amount)) {
-            toast.error("Please enter a valid amount");
+            toast.error(t("geral.validAmount"));
             return;
         }
 
         const today = new Date().toISOString().split('T')[0];
         if (date > today) {
-            toast.error("Please select a valid date");
+            toast.error(t("geral.validDate"));
             return;
         }
 
@@ -80,14 +82,14 @@ const Income = () => {
                 categoryId
             });
             if (response.status === 201) {
-                toast.success("Income added successfully");
+                toast.success(t("income.page.addIncomeSuccess"));
                 setOpenAddIncomeModal(false);
                 fetchIncomeData();
                 fetchIncomeCategories();
             }
         } catch (error) {
             console.error("Error adding income:", error);
-            toast.error("Error adding income");
+            toast.error(t("income.page.errorAdding"));
         }
     }
 
@@ -95,12 +97,12 @@ const Income = () => {
         try {
             await axiosConfig.delete(API_ENDPOINTS.DELETE_INCOME(id));
 
-            toast.success("Income deleted successfully");
+            toast.success(t("income.page.deleteIncomeSuccess"));
             setOpenDeleteAlert({show: false, data: null});
             fetchIncomeData();
         } catch (error) {
             console.error("Error deleting income:", error);
-            toast.error("Error deleting income");
+            toast.error(t("income.page.errorDeleting"));
         }
     }
 
@@ -136,14 +138,14 @@ const Income = () => {
                     />
 
                     {/* Add income modal*/}
-                    <Modal isOpen={openAddIncomeModal} onClose={() => setOpenAddIncomeModal(false)} title="Add Income">
+                    <Modal isOpen={openAddIncomeModal} onClose={() => setOpenAddIncomeModal(false)} title={t("income.page.addIncome")}>
                         <AddIncomeFrom onAddIncome={(income) =>handleAddIncome(income)} categories={categories}/>
                     </Modal>
 
                     {/* Delete income modal*/}
-                    <Modal isOpen={openDeleteAlert.show} onClose={() => setOpenDeleteAlert({show: false, data: null})} title="Delete Income" >
+                    <Modal isOpen={openDeleteAlert.show} onClose={() => setOpenDeleteAlert({show: false, data: null})} title={t("income.page.deleteIncome")} >
                         <DeleteAlert
-                            content="Are you sure you want to delete this income?"
+                            content={t("income.page.deleteIncomeConfirmation")}
                             onDelete={() => deleteIncome(openDeleteAlert.data)}
                         />
                     </Modal>

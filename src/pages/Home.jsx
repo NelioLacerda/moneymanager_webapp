@@ -11,9 +11,12 @@ import RecentTransactions from "../components/RecentTransactions.jsx";
 import {UserHook} from "../hooks/UserHook.jsx";
 import toast from "react-hot-toast";
 import FinanceOverview from "../components/FinanceOverview.jsx";
+import {useTranslation} from "react-i18next";
 
 const Home = () => {
     UserHook();
+
+    const { t } = useTranslation();
 
     const navigate = useNavigate();
     const [dashboardData, setDashboardData] = useState(null);
@@ -30,7 +33,7 @@ const Home = () => {
             }
         } catch (error) {
             console.error("Error fetching dashboard data:", error);
-            toast.error("Error fetching dashboard data");
+            toast.error(t("home.errorData"));
         } finally {
             setLoading(false);
         }
@@ -49,20 +52,20 @@ const Home = () => {
                         {/* Display the cards */}
                         <InfoCard
                             icon={<WalletCards />}
-                            label="Total Balance"
+                            label={t("home.totalBalance")}
                             value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
                             color="bg-purple-800"
                         />
                         <InfoCard
                             icon={<Wallet />}
-                            label="Total Income"
-                            value={addThousandsSeparator(dashboardData?.totalIncome || 0)}
+                            label={t("home.totalIncome")}
+                            value={addThousandsSeparator(dashboardData?.totalIncomes || 0)}
                             color="bg-green-800"
                         />
                         <InfoCard
                             icon={<Coins />}
-                            label="Total Expense"
-                            value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
+                            label={t("home.totalExpense")}
+                            value={addThousandsSeparator(dashboardData?.totalExpenses || 0)}
                             color="bg-red-800"
                         />
                     </div>
@@ -76,24 +79,24 @@ const Home = () => {
                         {/* Finance Overview chart*/}
                         <FinanceOverview
                             totalBalance={dashboardData?.totalBalance}
-                            totalIncome={dashboardData?.totalIncome}
-                            totalExpense={dashboardData?.totalExpense}
+                            totalIncome={dashboardData?.totalIncomes}
+                            totalExpense={dashboardData?.totalExpenses}
                         />
 
                         {/* Expense transactions*/}
                         <Transactions
-                            transactions={dashboardData?.recent5Expenses || []}
+                            transactions={dashboardData?.lastExpenses || []}
                             onMore={() => navigate("/expense")}
                             type="expense"
-                            title="Recent Expenses"
+                            title={t("home.recentExpenses")}
                         />
 
                         {/* Income transactions*/}
                         <Transactions
-                            transactions={dashboardData?.recent5Incomes || []}
+                            transactions={dashboardData?.lastIncomes || []}
                             onMore={() => navigate("/income")}
                             type="income"
-                            title="Recent Incomes"
+                            title={t("home.recentIncomes")}
                         />
                     </div>
                 </div>

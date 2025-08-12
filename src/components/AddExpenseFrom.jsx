@@ -4,10 +4,11 @@ import Input from "./Input.jsx";
 import {LoaderCircle} from "lucide-react";
 import {useTranslation} from "react-i18next";
 
-const AddIncomeFrom = ({onAddIncome, categories}) => {
+const AddExpenseFrom = ({onAddExpense, categories}) => {
+
     const { t } = useTranslation();
 
-    const [income, setIncome] = useState({
+    const [expense, setExpense] = useState({
         name: "",
         amount: "",
         categoryId: "",
@@ -23,79 +24,79 @@ const AddIncomeFrom = ({onAddIncome, categories}) => {
     }));
 
     const handleChange = (key, value) => {
-        setIncome({
-            ...income,
+        setExpense({
+            ...expense,
             [key]: value,
         });
     }
 
-    const handleAddIncome = async (income) => {
+    const handleAddExpense = async (expense) => {
         setLoading(true);
         try {
-            await onAddIncome(income);
+            await onAddExpense(expense);
         } finally {
             setLoading(false);
         }
     }
 
     useEffect(() => {
-        if (categories.length > 0 && !income.categoryId) {
-            setIncome((prev) => ({...prev, categoryId: categories[0].id}))
+        if (categories.length > 0 && !expense.categoryId) {
+            setExpense((prev) => ({...prev, categoryId: categories[0].id}))
         }
-    }, [categories, income.categoryId])
+    }, [categories, expense.categoryId])
 
     return(
         <div>
             <EmojiPickerPopup
-                icon={income.icon}
+                icon={expense.icon}
                 onSelect={(selectedIcon) => handleChange("icon", selectedIcon)}
             />
 
             <Input
-                value={income.name}
+                value={expense.name}
                 onChange={(target) => handleChange("name", target.value)}
-                label={t("income.form.name")}
-                placeHolder={t("income.form.placeholder")}
+                label={t("expense.form.name")}
+                placeHolder={t("expense.form.placeholder")}
                 type="text"
             />
 
             <Input
-                value={income.categoryId}
+                value={expense.categoryId}
                 onChange={(target) => handleChange("categoryId", target.value)}
-                label={t("income.form.category")}
+                label={t("expense.form.category")}
                 type="select"
                 isSelect={true}
                 options={categoryOptions}
             />
 
             <Input
-                value={income.amount}
+                value={expense.amount}
                 onChange={(target) => handleChange("amount", target.value)}
-                label={t("income.form.amount")}
-                placeHolder={t("income.form.placeholderAmount")}
+                label={t("expense.form.amount")}
+                placeHolder={t("expense.form.placeholderAmount")}
                 type="number"
             />
 
             <Input
-                value={income.date}
+                value={expense.date}
                 onChange={(target) => handleChange("date", target.value)}
-                label={t("income.form.date")}
+                label={t("expense.form.date")}
                 type="date"
                 placeHolder=""
             />
 
             <div className="flex justify-end mt-6">
-                <button onClick={() => handleAddIncome(income)} disabled={loading} type="button" className="hover:cursor-pointer inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed active:translate-y-px">
+                <button onClick={() => handleAddExpense(expense)} disabled={loading} type="button" className="hover:cursor-pointer inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed active:translate-y-px">
                     {loading ? (
                         <>
                             <LoaderCircle className="animate-spin w-4 h-4" />
                             <>
-                                {t("income.form.adding")}
+                                {t("expense.form.adding")}
                             </>
                         </>
                     ) : (
                         <>
-                            {t("income.form.add")}
+                            {t("expense.form.add")}
                         </>
                     )}
                 </button>
@@ -104,4 +105,4 @@ const AddIncomeFrom = ({onAddIncome, categories}) => {
     )
 }
 
-export default AddIncomeFrom;
+export default AddExpenseFrom;
