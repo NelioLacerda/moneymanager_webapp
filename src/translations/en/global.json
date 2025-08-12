@@ -1,0 +1,60 @@
+{
+  "geral": {
+    "fillAlFields": "Please fill all the fields"
+  },
+  "emojiPicker": {
+    "pick": "Pick icon",
+    "change": "Change icon"
+  },
+  "signup": {
+    "title": "Create an account",
+    "subtitle": "Start tracking your finances with Money Manager",
+    "fullName": "Full Name*",
+    "fullNamePlaceholder": "Enter your name",
+    "email": "Email Address*",
+    "emailPlaceholder": "email@example.com",
+    "password": "Password*",
+    "signUp": "SIGN UP",
+    "signingUp": "Signing Up...",
+    "alreadyHaveAccount": "Already have an account? ",
+    "login": "Login"
+  },
+  "login": {
+    "title": "Welcome Back",
+    "subtitle": "Please enter your details to login in",
+    "email": "Email Address*",
+    "emailPlaceholder": "email@example.com",
+    "password": "Password*",
+    "loginText": "LOGIN",
+    "logging": "Logging In...",
+    "dontHaveAccount": "Don't have an account? ",
+    "signup": "Create an account"
+  },
+  "category": {
+    "page": {
+      "title": "All Categories",
+      "addCategory": "Add Category",
+      "errorData": "Error fetching category data",
+      "successAdding": "Category added successfully",
+      "errorAdding": "Error adding category",
+      "successUpdating": "Category updated successfully",
+      "errorUpdating": "Error updating category",
+      "edit": "Edit Category"
+    },
+    "list": {
+      "title": "Category Sources",
+      "noCategories": "No categories found"
+    },
+    "form": {
+      "categoryName": "Category Name*",
+      "placeholder": "e.g. Food, Transportation, Salary, etc.",
+      "categoryType": "Category Type*",
+      "updating": "Updating..." ,
+      "adding": "Adding...",
+      "update": "Update Category",
+      "add": "Add Category",
+      "income": "Income",
+      "expense": "Expense"
+    }
+  }
+}

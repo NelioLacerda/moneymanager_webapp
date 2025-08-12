@@ -1,0 +1,27 @@
+{
+  "signup": {
+    "title": "Criar conta",
+    "subtitle": "Começa a controlar as tuas finanças com o Money Manager",
+    "fullName": "Nome Completo*",
+    "fullNamePlaceholder": "Insere o teu nome",
+    "email": "Endereço de Email*",
+    "emailPlaceholder": "exemplo@dominio.com",
+    "password": "Palavra-passe*",
+    "passwordPlaceholder": "*********",
+    "signUp": "REGISTRAR",
+    "signingUp": "A registar...",
+    "alreadyHaveAccount": "Já tens uma conta? ",
+    "login": "Iniciar sessão"
+  },
+  "login": {
+    "title": "Bem-vindo de volta",
+    "subtitle": "Por favor, introduz os teus dados para iniciar sessão",
+    "email": "Endereço de email*",
+    "emailPlaceholder": "email@exemplo.com",
+    "password": "Palavra-passe*",
+    "loginText": "INICIAR SESSÃO",
+    "logging": "A iniciar sessão...",
+    "dontHaveAccount": "Ainda não tens conta? ",
+    "signup": "Criar conta"
+  }
+}
